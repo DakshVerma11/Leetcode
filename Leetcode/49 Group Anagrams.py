@@ -1,4 +1,49 @@
 class Solution(object):
+         
+    def groupAnagrams(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: List[List[str]]
+        """
+        anagram_map = defaultdict(list)
+        
+        for word in strs:
+            sorted_word = ''.join(sorted(word))
+            anagram_map[sorted_word].append(word)
+        
+        return list(anagram_map.values())
+
+
+
+
+
+
+
+
+class Solution(object):
+         
+    def groupAnagrams(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: List[List[str]]
+        """
+        ans = defaultdict(list)
+        for s in strs:
+            ans[tuple(sorted(Counter(s).items()))].append(s)
+        return list(ans.values())
+        
+        
+        
+        
+        
+        
+                
+        
+        
+        
+        
+        
+class Solution(object):
     def isAnagram(self, s, t):
         if len(s)!=len(t):
             return False
