@@ -36,7 +36,7 @@ class Solution:
             res = max(res, prefix[right] - prefix[left])
             left += 1
         
-        # Case 3 & 4: go left then right, and right then left
+        # left then right == right then left
         # all subarrays [l, r]
         l = 0
         for r in range(n):
