@@ -9,7 +9,7 @@ class Solution:
         maxfruits = 1
         curtree = set([fruits[0]])
         
-        for i in range(1, len(fruits)):    # Start from 1 since 0 is already counted
+        for i in range(1, len(fruits)):
             if fruits[i] in curtree:
                 fruit_count += 1
                 if curseq[0][0] == fruits[i]:
@@ -20,7 +20,7 @@ class Solution:
                     curseq[0][0] = fruits[i]
             else:
                 maxfruits = max(fruit_count, maxfruits)
-                fruit_count = curseq[0][1] + 1   # plus the new fruit
+                fruit_count = curseq[0][1] + 1   
                 curseq[0], curseq[1] = curseq[1], curseq[0]
                 curseq[0][0] = fruits[i]
                 curseq[0][1] = 1
