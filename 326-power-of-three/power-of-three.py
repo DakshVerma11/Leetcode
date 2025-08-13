@@ -1,11 +1,3 @@
 class Solution:
     def isPowerOfThree(self, n: int) -> bool:
-        if  n<1:
-            return False
-        while n>1:
-            #print(n)
-            if n%3!=0:
-                return False
-            n//=3
-        #print("Final ",n)
-        return True if n else False
+        return n == 1 or n == 3 or n == 9 or n == 27 or n == 81 or n == 243 or n == 729 or n == 2187 or n == 6561 or n == 19683 or n == 59049 or n == 177147 or n == 531441 or n == 1594323 or n == 4782969 or n == 14348907 or n == 43046721 or n == 129140163 or n == 387420489 or n == 1162261467 or n == 3486784401 or n == 10460353203 or n == 31381059609 or n == 94143178827 or n == 282429536481 or n == 847288609443 or n == 2541865828329 or n == 7625597484987 or n == 22876792454961 or n == 68630377364883 or n == 205891132094649 or n == 617673396283947 or n == 1853020188851841 or n == 5559060566555523 or n == 16677181699666568 or n == 50031545098999710 or n == 150094635296999140 or n == 450283905890997400 or n == 1350851717672992000 or n == 4052555153018976000
