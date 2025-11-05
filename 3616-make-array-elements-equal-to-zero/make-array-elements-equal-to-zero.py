@@ -1,49 +1,24 @@
 class Solution:
     def countValidSelections(self, nums: List[int]) -> int:
+        res = 0
         n = len(nums)
-        count = 0
-        
-        # Try each index as the starting position
-        for curr in range(n):
-            if nums[curr] == 0:
-                # Try moving to the right first
-                direction = 1  # Moving right
-                temp_nums = nums[:]
-                valid = True
-                pos = curr
-                
-                # Simulate the process moving right
-                while 0 <= pos < n:
-                    if temp_nums[pos] == 0:
-                        pos += direction
-                    elif temp_nums[pos] > 0:
-                        temp_nums[pos] -= 1
-                        direction *= -1  # Reverse direction
-                        pos += direction
-                    else:
-                        break  # Out of bounds or invalid situation
-                # If the entire list was reduced to zero, it's valid for this starting point
-                if all(x == 0 for x in temp_nums):
-                    count += 1
-
-                # Now try moving left from the same position
-                direction = -1  # Moving left
-                temp_nums = nums[:]
-                valid = True
-                pos = curr
-                
-                # Simulate the process moving left
-                while 0 <= pos < n:
-                    if temp_nums[pos] == 0:
-                        pos += direction
-                    elif temp_nums[pos] > 0:
-                        temp_nums[pos] -= 1
-                        direction *= -1  # Reverse direction
-                        pos += direction
-                    else:
-                        break  # Out of bounds or invalid situation
-                # If the entire list was reduced to zero, it's valid for this starting point
-                if all(x == 0 for x in temp_nums):
-                    count += 1
-        
-        return count
+        if n==1:
+            return 2
+    
+        lsum = [0]*n 
+        rsum = [0]*n
+        for i in range(1,n):
+            lsum[i] = lsum[i-1]+nums[i-1]
+        for i in range(n-2,-1,-1): #missed rsum[0]
+            rsum[i] = rsum[i+1]+nums[i+1]
+        # print(lsum)
+        # print(rsum)
+        # print("-----------")
+        for i in range(n):
+            if nums[i] != 0:
+                continue
+            if lsum[i] == rsum[i]:
+                res+=2
+            if abs(lsum[i]-rsum[i]) == 1:
+                res+=1
+        return res
