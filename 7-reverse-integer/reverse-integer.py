@@ -4,15 +4,12 @@ class Solution:
         dig=[]
         if neg:
             x*=-1
-        while x:
-            dig.append(x%10)
-            x//=10
-
-        
         res=0
-        for digit in dig:
+        while x:
             res*=10
-            res+=digit
+            res+=x%10
+            x//=10
+            
 
         if res>2**31:
             return 0
