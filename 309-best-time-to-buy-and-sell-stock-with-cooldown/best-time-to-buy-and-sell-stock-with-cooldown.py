@@ -1,18 +1,11 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         n=len(prices)
-        dp={}
-        def backtracking(idx, canBuy):
-            if idx>=n:
-                return 0
-            if (idx,canBuy) in dp:
-                return dp[(idx,canBuy)]
-            dontDoAnythingToday=backtracking(idx+1,canBuy)
-            if canBuy:
-                buyToday=backtracking(idx+1,False)-prices[idx]
-                dp[(idx,canBuy)]=max(dontDoAnythingToday,buyToday)
-            else:
-                sellToday=backtracking(idx+2,True)+prices[idx]
-                dp[(idx,canBuy)]=max(dontDoAnythingToday,sellToday)
-            return dp[(idx,canBuy)]
-        return backtracking(0,True)
+
+        dp=[[0]*(2) for _ in range(n+2)]
+
+        for idx in range(n-1,-1,-1):
+            dp[idx][0] = max(dp[idx + 1][0], dp[idx + 2][1] + prices[idx])
+            dp[idx][1] = max(dp[idx + 1][1],  dp[idx + 1][0] - prices[idx])
+        print(dp)
+        return dp[0][1]
