@@ -5,10 +5,7 @@ class Solution:
         freq=defaultdict(int)
         for r in range(len(s)):
             freq[s[r]]+=1
-            if freq[s[r]]==3:
-                while s[l]!=s[r]:
-                    freq[s[l]]-=1
-                    l+=1
+            while freq[s[r]]>2:
                 freq[s[l]]-=1
                 l+=1
             ans=max(ans,r-l+1)
